@@ -11,20 +11,20 @@ var timer = null;
 
 setDifficulty();
 
-function countseconds(){
+function countseconds(){ //tells everySecond to run every second
   timer=setInterval(everySecond, 1000)
 }
 
-function everySecond(){
+function everySecond(){ //updates time
   seconds++;
   document.querySelector(".timer").innerText = seconds;
 }
 
-function stoptimer(){
+function stoptimer(){ //stop the timer
   clearInterval(timer)
 }
 
-function render(map, rows, columns) {
+function render(map, rows, columns) { //creates rows/columns of buttons in html
   var result = "";
   for(var i=0; i<rows; i++) {
     for(var j=0; j<columns; j++) {
@@ -34,14 +34,14 @@ function render(map, rows, columns) {
   return result;
 }
 
-function noRightClick(){
+function noRightClick(){ //adds event listener that disables the right-click menu when right-clicking on all the buttons
   var buttons = document.querySelectorAll(".square");
   for (var z=0;z<buttons.length;z++){
     buttons[z].addEventListener("contextmenu", e => e.preventDefault());
   }
 }
 
-function createDojo() {
+function createGrid() { //creates nested arrays which represent the game map
 
   var newarr = [];
   var temparr=[];
@@ -57,7 +57,7 @@ function createDojo() {
   map = newarr;
 }
 
-function addMines(map, numMines){
+function addMines(map, numMines){ //adds mines randomly into the map
   minelocations = [];
   var count = 0;
   var i = 0;
@@ -73,8 +73,8 @@ function addMines(map, numMines){
   }
 }
 
-function reset() {
-  createDojo();
+function reset() { //everything needed to reset the game back
+  createGrid();
   addMines(map, mines);
   console.log(map)
   document.querySelector("#grid").innerHTML = render(map, rows, columns);
@@ -90,7 +90,7 @@ function reset() {
   document.querySelector(".timer").innerText = seconds;
 }
 
-function setDifficulty() {
+function setDifficulty() { //sets difficulty level and all relevant variables
   var difficulty = document.getElementById("difficulty").value;
   if (difficulty=="Beginner"){
     mines=10;
@@ -111,12 +111,12 @@ function setDifficulty() {
   reset();
 }
 
-function leftClick(i, j, element){
+function leftClick(i, j, element){ //logic for when user left clicks on a button
 
   element.classList.add("square-clicked")
   element.classList.remove("square")
 
-//Creates first move protection
+  //Creates first move protection
   if (firstmove){
     countseconds()
     if (map[i][j] == 1){
@@ -138,8 +138,7 @@ function leftClick(i, j, element){
   }
   firstmove=false;
 
-
-//Check the Lose Condition
+  //Check the Lose Condition
   if (map[i][j] == 1) {
     element.style.backgroundColor = "red"
     for (var z=0;z<minelocations.length;z++){
@@ -160,6 +159,7 @@ function leftClick(i, j, element){
     return;
   }
 
+  // if user clicks on button they flagged previously
   if (element.classList.contains("flagged")){
     element.classList.remove("flagged");
     document.getElementById("bombsleft").innerText ++;
@@ -167,6 +167,7 @@ function leftClick(i, j, element){
     userflags.splice(remove, 1);
   }
 
+  // checks and displays how many mines are around the clicked button, if 0 will execute "bloom".
   var howmanymines = howMany(i,j,element);
   if (howmanymines== 0){
     element.innerText = "";
@@ -178,6 +179,7 @@ function leftClick(i, j, element){
     element.classList.add("color"+howmanymines);
   }
 
+  // what to do if user has won
   if (checkWin()){
     stoptimer();
     document.getElementById("announcement").innerText="You Won!";
@@ -186,7 +188,7 @@ function leftClick(i, j, element){
   };
 }
 
-function howMany(i, j) {
+function howMany(i, j) { //logic to determine how many bombs are around the button at the passed coordinate values i and j
   var sum=0;
   var x1 = i-1;
   var x2 = i+1;
@@ -218,7 +220,7 @@ function howMany(i, j) {
   return sum;
 }
 
-function bloom(){
+function bloom(){ //what happens when user clicks on a button with no surrounding mines
   var clickedzeros = document.querySelectorAll(".zero")
   var checkat = [];
 
@@ -277,7 +279,7 @@ function bloom(){
   }
 }
 
-function flag(element){
+function flag(element){ //adds flags when right clicking and removes flags if right clicking a flagged button
   if (element.classList.contains("square-clicked")==false && element.classList.contains("flagged")==false){
     element.innerHTML = '<img class="buttonimg" src="./Images/flag.png" alt="flag">';
     element.classList.add("flagged");
@@ -293,7 +295,7 @@ function flag(element){
   }
 }
 
-function checkWin(){
+function checkWin(){ //checks if the number of safe buttons have been clicked
   if (rows*columns-mines == document.getElementsByClassName("square-clicked").length){
     return true;
   }
@@ -302,7 +304,7 @@ function checkWin(){
   }
 }
 
-function disablebuttons(){
+function disablebuttons(){ //disables left and right click functionality when game ends
   for (i=0; i<rows; i++){
     for (j=0; j<columns; j++){
       document.getElementById(i+"-"+j).onclick=null;

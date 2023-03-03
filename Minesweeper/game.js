@@ -256,6 +256,7 @@ function bloom(){
       for (y1; y1<=y2; y1++){
         var coordinates = x1+"-"+y1;
         document.getElementById(coordinates).classList.add("square-clicked")
+        document.getElementById(coordinates).classList.remove("square")
         if (document.getElementById(coordinates).classList.contains("flagged")){
           document.getElementById(coordinates).innerHTML = '';
           document.getElementById(coordinates).classList.remove("flagged");

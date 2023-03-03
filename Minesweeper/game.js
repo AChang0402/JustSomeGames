@@ -304,7 +304,7 @@ function checkWin(){
 
 function disablebuttons(){
   for (i=0; i<rows; i++){
-    for (j=0; j<rows; j++){
+    for (j=0; j<columns; j++){
       document.getElementById(i+"-"+j).onclick=null;
       document.getElementById(i+"-"+j).oncontextmenu=null;
     }

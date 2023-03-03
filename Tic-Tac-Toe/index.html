@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="head">
+        <span id = "headtitle">JustSomeGames</span>
+    </div>
+    <a href="../index.html" class="back"><img src="./Images/goback.png" alt="go back" id="backarrow">Go Back</a>
+    <h1 class = "title">Tic-Tac-Toe</h1>
+    <div class="scoreboard white">
+        <p class="center">SCOREBOARD</p>
+        <div class="scores">
+            <div class="flex">
+                <p class="red">P1(X): </p>
+                <p id="p1score">0</p>
+            </div>
+            <div class="flex">
+                <p class="blue">P2(O): </p>
+                <p id="p2score">0</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="game">
+        <div class="toprow">
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="00"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="01"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="02"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gridline-h"></div>
+        <div class="midrow">
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="10"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="11"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="12"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gridline-h"></div>
+        <div class="botrow">
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="20"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="21"></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "gridline-v"></div>
+            <div class="flip-card">
+                <div class="flip-card-inner" onclick="flip(this)")>
+                    <div class="smallbox flip-card-front" onclick="choose(this)"></div>
+                    <div class="smallbox flip-card-back">
+                        <p class="XO" id="22"></p>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <h2 id="announcement"></h2>
+    <div class = "center"><button id="resetbutton" onclick="reset()">RESET</button></div>
+    <script src="script.js"></script>
+</body>
+</html>

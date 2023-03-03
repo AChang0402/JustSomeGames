@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="head">
+        <span id = "headtitle">JustSomeGames</span>
+    </div>
+    <a href="../index.html" class="back"><img src="./Images/goback.png" alt="go back" id="backarrow">Go Back</a>
+    <h2>Minesweeper<h2>
+    <div class="game">
+        <div class="gamehead">
+            <select name="difficulty" id="difficulty" onchange="setDifficulty()">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+            <div class="flags">
+                <img src="./Images/bomb.png" alt="" class="smallimg">
+                <p id="bombsleft">10</p>
+                <button id="reset" onclick="reset()">Reset</button>
+            </div>
+            <div class="timer">0</div>
+        </div>
+        <div id="grid">Loading...</div>
+    </div>
+    <p id="announcement"></p>
+    <p id="subtext"></p>
+    <script src="game.js"></script>
+</body>
+</html>
